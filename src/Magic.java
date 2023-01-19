@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Magic extends Hero{
     private int magic;
 
@@ -9,6 +11,11 @@ public class Magic extends Hero{
     @Override
     public String toString() {
         return super.toString() +
-                "magic=" + magic;
+                " magic= " + magic;
+    }
+
+    @Override
+    public void step(ArrayList<Hero> listHeroes) {
+
     }
 }

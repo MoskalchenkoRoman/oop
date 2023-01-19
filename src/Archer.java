@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Archer extends Hero{
     private int shoots;
     public Archer(String name, String type, int attack, int defence, int shoots, int[] damage, int hp, int speed) {
@@ -7,6 +9,11 @@ public class Archer extends Hero{
 
     @Override
     public String toString() {
-        return super.toString() + "shoots=" + shoots;
+        return super.toString() + " shoots= " + shoots;
+    }
+
+    @Override
+    public void step(ArrayList<Hero> listHeroes) {
+
     }
 }

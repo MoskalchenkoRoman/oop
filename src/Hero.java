@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Hero {
+public abstract class Hero implements Game{
     private String name, type;
-    private int attack, defence, hp, speed;
+    private int attack, defence, hp, newhp, speed;
     private int[] damage;
 
     public Hero(String name, String type, int attack, int defence, int[] damage, int hp, int speed) {
@@ -12,6 +13,7 @@ public class Hero {
         this.defence = defence;
         this.damage = damage;
         this.hp = hp;
+        this.newhp = this.hp;
         this.speed = speed;
     }
 
@@ -47,6 +49,19 @@ public class Hero {
                 ", defence=" + defence +
                 ", damage=" + Arrays.toString(damage) +
                 ", hp=" + hp +
+                ", newhp=" + newhp +
                 ", speed=" + speed;
     }
+
+    public void step(){
+
+    }
+
+    @Override
+    public String getInfo(){
+
+        return type + name + " Имеет здоровья: " + newhp + " из " + hp;
+    }
+
+    public abstract void step(ArrayList<Hero> listHeroes);
 }

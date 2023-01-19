@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Peasant extends Hero{
     private int delivery;
 
@@ -18,5 +20,10 @@ public class Peasant extends Hero{
     @Override
     public String toString(){
         return super.toString() + ", delivery= " + delivery;
+    }
+
+    @Override
+    public void step(ArrayList<Hero> listHeroes) {
+
     }
 }
