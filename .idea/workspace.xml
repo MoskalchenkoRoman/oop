@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6ce045f-4358-40cc-bf67-5099e9324993" name="Changes" comment="dz2">
+    <list default="true" id="d6ce045f-4358-40cc-bf67-5099e9324993" name="Changes" comment="dz3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Archer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Archer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Magic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Magic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Peasant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Peasant.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,12 +69,20 @@
       <option name="project" value="LOCAL" />
       <updated>1674166343603</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="dz3">
+      <created>1674579900260</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1674579900260</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dz" />
     <MESSAGE value="dz2" />
-    <option name="LAST_COMMIT_MESSAGE" value="dz2" />
+    <MESSAGE value="dz3" />
+    <option name="LAST_COMMIT_MESSAGE" value="dz3" />
   </component>
 </project>

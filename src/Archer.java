@@ -26,8 +26,8 @@ public class Archer extends Hero {
                 }
             }
         }
-            shoots -= 1;
-            System.out.println(this.getType() + " стреляет и остакот стрел у него" + shoots);
+        shoots -= 1;
+        System.out.println(this.getType() + " стреляет и остакот стрел у него" + shoots);
 
     }
 }

@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.util.*;
 
 public class Main {
@@ -15,10 +16,14 @@ public class Main {
         GetHeroes(heroesParty2, 2);
 //        allHeroes(heroesParty2);
         heroesParty2.sort(Comparator.comparing(Hero::getType));
-        heroesParty2.forEach(n -> System.out.println(n.getInfo() + " ; "));
-        heroesParty2.forEach(n -> n.step(heroesParty2));
-
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            heroesParty2.forEach(n -> System.out.println(n.getInfo() + " ; "));
+            heroesParty2.forEach(n -> n.step(heroesParty2));
+            scanner.nextLine();
+        }
     }
+
 
     public static String getRandomString(int length) {
         String str = "ЙФЯЧЫЦУВСМАКЕПИТРНГОЬБЛШЩДЮЖЗХ";
