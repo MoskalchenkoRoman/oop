@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public abstract class Hero implements Game{
+    Random random = new Random();
     private String name, type;
-    private int attack, defence, hp, newhp, speed;
-    private int[] damage;
+    protected int attack, defence, hp, newhp, speed;
+    protected int[] damage;
 
     public Hero(String name, String type, int attack, int defence, int[] damage, int hp, int speed) {
         this.name = name;
@@ -13,7 +15,7 @@ public abstract class Hero implements Game{
         this.defence = defence;
         this.damage = damage;
         this.hp = hp;
-        this.newhp = this.hp;
+        this.newhp = this.hp - random.nextInt(hp);
         this.speed = speed;
     }
 
@@ -31,9 +33,7 @@ public abstract class Hero implements Game{
         return defence;
     }
 
-    public int[] getDamage() {
-        return damage;
-    }
+
 
     public int getHp() {
         return hp;
@@ -49,7 +49,7 @@ public abstract class Hero implements Game{
                 ", defence=" + defence +
                 ", damage=" + Arrays.toString(damage) +
                 ", hp=" + hp +
-                ", newhp=" + newhp +
+                ", newhp=" + (newhp * 100/hp) + " %" +
                 ", speed=" + speed;
     }
 
@@ -59,8 +59,7 @@ public abstract class Hero implements Game{
 
     @Override
     public String getInfo(){
-
-        return type + name + " Имеет здоровья: " + newhp + " из " + hp;
+        return type + " " + (newhp * 100/hp) + " %";
     }
 
     public abstract void step(ArrayList<Hero> listHeroes);

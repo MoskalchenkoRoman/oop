@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,11 +11,12 @@ public class Main {
 //        allHeroes(heroes);
 //        System.out.println("=======ВЫБОРКА ПО КЛАССУ======");
 //        parseHeroes(heroes,"Monk");
-        GetHeroes(heroesParty1, 1);
+//        GetHeroes(heroesParty1, 1);
         GetHeroes(heroesParty2, 2);
-        allHeroes(heroesParty2);
-//        heroesParty1.forEach(n -> System.out.println(n.getInfo()));
-
+//        allHeroes(heroesParty2);
+        heroesParty2.sort(Comparator.comparing(Hero::getType));
+        heroesParty2.forEach(n -> System.out.println(n.getInfo() + " ; "));
+        heroesParty2.forEach(n -> n.step(heroesParty2));
 
     }
 

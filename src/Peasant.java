@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Peasant extends Hero{
-    private int delivery;
+    public int delivery;
 
     public Peasant(String name, String type, int attack, int defence, int[] damage, int hp, int speed, int delivery) {
         super(name, type, attack, defence, damage, hp, speed);
@@ -24,6 +24,6 @@ public class Peasant extends Hero{
 
     @Override
     public void step(ArrayList<Hero> listHeroes) {
-
+        delivery = 1;
     }
 }
