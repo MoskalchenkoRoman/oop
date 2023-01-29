@@ -1,111 +1,119 @@
-import java.io.Console;
 import java.util.*;
 
 public class Main {
+    public static ArrayList<BaseHero> leftSide;
+    public static ArrayList<BaseHero> rightSide;
+    public static Scanner input = new Scanner(System.in);
+    public static final int TEAM_SIZE = 10;
+
     public static void main(String[] args) {
+        init();
+        getStep();
+//        getMenu();
+    }
 
-//        ArrayList<Hero> heroes = new ArrayList<>();
-        ArrayList<Hero> heroesParty1 = new ArrayList<>();
-        ArrayList<Hero> heroesParty2 = new ArrayList<>();
-//        GetHeroes(heroes);
-//        System.out.println("=======ВЕСЬ СПИСОК======");
-//        allHeroes(heroes);
-//        System.out.println("=======ВЫБОРКА ПО КЛАССУ======");
-//        parseHeroes(heroes,"Monk");
-//        GetHeroes(heroesParty1, 1);
-        GetHeroes(heroesParty2, 2);
-//        allHeroes(heroesParty2);
-        heroesParty2.sort(Comparator.comparing(Hero::getType));
-        Scanner scanner = new Scanner(System.in);
+    public static void init() {
+        leftSide = new ArrayList<>();
+        rightSide = new ArrayList<>();
+        int x = 1;
+        int y = 1;
+        for (int i = 0; i < TEAM_SIZE; i++) {
+            switch (new Random().nextInt(4)) {
+                case (0) -> leftSide.add(new Peasant(leftSide, x, y++));
+                case (1) -> leftSide.add(new Outlaw(leftSide, x, y++));
+                case (2) -> leftSide.add(new Sniper(leftSide, x, y++));
+                case (3) -> leftSide.add(new Magician(leftSide, x, y++));
+            }
+        }
+
+        x = TEAM_SIZE;
+        y = 1;
+        for (int i = 0; i < TEAM_SIZE; i++) {
+            switch (new Random().nextInt(4)) {
+                case (0) -> rightSide.add(new Peasant(rightSide, x, y++));
+                case (1) -> rightSide.add(new Spearman(rightSide, x, y++));
+                case (2) -> rightSide.add(new Crossbowman(rightSide, x, y++));
+                case (3) -> rightSide.add(new Monk(rightSide, x, y++));
+            }
+        }
+    }
+
+    public static void getStep() {
+        int numRound = 1;
         while (true) {
-            heroesParty2.forEach(n -> System.out.println(n.getInfo() + " ; "));
-            heroesParty2.forEach(n -> n.step(heroesParty2));
-            scanner.nextLine();
-        }
-    }
-
-
-    public static String getRandomString(int length) {
-        String str = "ЙФЯЧЫЦУВСМАКЕПИТРНГОЬБЛШЩДЮЖЗХ";
-        Random random = new Random();
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < length; i++) {
-            int number = random.nextInt(21);
-            sb.append(str.charAt(number));
-        }
-        return sb.toString();
-    }
-
-    private static String[] NameHero(int size){
-        String [] nameHeroes = new String[size];
-        for (int i = 0; i < nameHeroes.length; i++) {
-            nameHeroes[i] = getRandomString(nameHeroes.length);
-        }
-        return nameHeroes;
-    }
-
-    private static void GetHeroes(ArrayList<Hero> listHeroes, int numParty) {
-        String [] nameHeroes = NameHero(10);
-        System.out.println(Arrays.toString(nameHeroes));
-        Random random = new Random();
-
-        for (int i = 0; i < nameHeroes.length; i++) {
-            int rand = random.nextInt(4);
-            if (numParty == 1) {
-                if (rand == 0) {
-                    listHeroes.add(new Peasant(nameHeroes[i]));
-                } else if (rand == 1) {
-                    listHeroes.add(new Outlaw(nameHeroes[i]));
-                } else if (rand == 2) {
-                    listHeroes.add(new Sniper(nameHeroes[i]));
-                } else if (rand == 3) {
-                    listHeroes.add(new Sorcerer(nameHeroes[i]));
-                }
+            ConsoleView.view();
+            input.nextLine();
+            System.out.println(AnsiColors.ANSI_GREEN + "STEP " + numRound + AnsiColors.ANSI_RESET);
+            leftSide.forEach(item -> item.step(rightSide));
+            System.out.println("------------------------");
+            rightSide.forEach(item -> item.step(leftSide));
+            System.out.println();
+            if (checkWin(rightSide)) {
+                System.out.println("\uD83D\uDC9A\uD83E\uDD18\uD83D\uDC9ALEFT TEAM WIN!\uD83D\uDC9A\uD83E\uDD18\uD83D\uDC9A");
+                break;
             }
-            else {
-                if (rand == 0) {
-                    listHeroes.add(new Peasant(nameHeroes[i]));
-                } else if (rand == 1) {
-                    listHeroes.add(new Spearman(nameHeroes[i]));
-                } else if (rand == 2) {
-                    listHeroes.add(new Crossbowman(nameHeroes[i]));
-                } else if (rand == 3) {
-                    listHeroes.add(new Monk(nameHeroes[i]));
-                }
+            if (checkWin(leftSide)) {
+                System.out.println("\uD83D\uDC99\uD83E\uDD18\uD83D\uDC99RIGHT TEAM WIN!\uD83D\uDC99\uD83D\uDC99\uD83E\uDD18");
+                break;
             }
-
-
-
-//            if (rand == 0) {
-//                listHeroes.add(new Peasant(nameHeroes[i]));
-//            } else if (rand == 1) {
-//                listHeroes.add(new Outlaw(nameHeroes[i]));
-//            } else if (rand == 2) {
-//                listHeroes.add(new Sniper(nameHeroes[i]));
-//            } else if (rand == 3) {
-//                listHeroes.add(new Sorcerer(nameHeroes[i]));
-//            } else if (rand == 4) {
-//                listHeroes.add(new Spearman(nameHeroes[i]));
-//            } else if (rand == 5) {
-//                listHeroes.add(new Crossbowman(nameHeroes[i]));
-//            } else {
-//                listHeroes.add(new Monk(nameHeroes[i]));
-//            }
+            numRound += 1;
         }
-
-
     }
 
-    private static void parseHeroes(ArrayList<Hero> listHeroes, String heroes) {
-        for (Hero hero : listHeroes) {
-            if (hero.getClass().getName().equals(heroes)) {
-                System.out.println(hero);
+    public static boolean checkWin(ArrayList<BaseHero> teamList) {
+        boolean win = true;
+        for (int i = 0; i < teamList.size(); i++) {
+            if (teamList.get(i).hp != 0) {
+                win = false;
+                break;
+            }
+        }
+        return win;
+    }
+
+    public static void getMenu() {
+        while (true) {
+            System.out.println("Choose sorting class:");
+            System.out.println("0 -> All");
+            System.out.println("1 -> Peasant");
+            System.out.println("2 -> Outlaw");
+            System.out.println("3 -> Sniper");
+            System.out.println("4 -> Magician");
+            System.out.println("5 -> Spearman");
+            System.out.println("6 -> Crossbowman");
+            System.out.println("7 -> Monk");
+            System.out.println("A -> Attack");
+            System.out.println("H -> Healing");
+            System.out.println("X -> Exit");
+            System.out.print("Input number: ");
+            String choice = input.nextLine().toLowerCase();
+            switch (choice) {
+                case ("0") -> getSortedClass(leftSide, "BaseHero");
+                case ("1") -> getSortedClass(leftSide, "Peasant");
+                case ("2") -> getSortedClass(leftSide, "Outlaw");
+                case ("3") -> getSortedClass(leftSide, "Sniper");
+                case ("4") -> getSortedClass(leftSide, "Magician");
+                case ("5") -> getSortedClass(leftSide, "Spearman");
+                case ("6") -> getSortedClass(leftSide, "Crossbowman");
+                case ("7") -> getSortedClass(leftSide, "Monk");
+//                case ("a") -> getAttack();
+//                case ("h") -> getHealing(team1);
+                case ("x") -> System.exit(0);
             }
         }
     }
-    private static void allHeroes(ArrayList<Hero> listHeroes) {
-        for (Hero hero : listHeroes) {
-                System.out.println(hero);
+
+    public static void getSortedClass(ArrayList<BaseHero> list, String nameClass) {
+        if (Objects.equals(nameClass, "BaseHero")) {
+            for (Object o : list) {
+                System.out.println(o);
+            }
+            getMenu();
+        }
+        for (Object o : list) {
+            if (o.getClass().getName().equals(nameClass)) {
+                System.out.println(o);
+            }
         }
     }
 }

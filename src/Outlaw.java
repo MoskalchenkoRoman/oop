@@ -1,5 +1,7 @@
-public class Outlaw extends Melee{
-    public Outlaw(String name){
-        super(name, "Разбойник", 8, 3, new int[] {2, 4}, 10, 6);
+import java.util.ArrayList;
+
+public class Outlaw extends Warriors {
+    public Outlaw(ArrayList<BaseHero> myTeam, int x, int y) {
+        super(myTeam, String.format("%02d", ++Outlaw.number), 10, 8, 3, new int[]{2, 4}, 6, x, y);
     }
 }
