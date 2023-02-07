@@ -78,12 +78,12 @@ public abstract class BaseHero implements Face {
         int max = 101;
         int index = -1;
         for (int i = 0; i < teamList.size(); i++) {
-            if (teamList.get(i).hp != 0) {
+//            if (teamList.get(i).hp != 0) {
                 if (teamList.get(i).getInfo() < max) {
                     max = teamList.get(i).getInfo();
                     index = i;
                 }
-            }
+//            }
         }
         return index;
     }
